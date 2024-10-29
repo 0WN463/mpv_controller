@@ -30,11 +30,15 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         route = parsed_url.path
         query_params = parse_qs(parsed_url.query)
 
-        if route == '/playpause':
-            send_to_socket('cycle pause')
-            self.send_response(204)
-            self.end_headers()
-            return
+        match route:
+            case '/playpause':
+                send_to_socket('cycle pause')
+            case '/seek':
+                amt, *_ = query_params['amt']
+                send_to_socket(f'seek {amt}')
+
+        self.send_response(204)
+        self.end_headers()
         
 httpd = HTTPServer(('', PORT), SimpleHTTPRequestHandler)
 httpd.serve_forever()
