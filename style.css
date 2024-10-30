@@ -4,6 +4,11 @@
   height: 10dvh;
 }
 
+button {
+  width: 10%;
+  font-size: large;
+}
+
 .top-wrapper {
   display: flex;
   flex-direction: column-reverse;
