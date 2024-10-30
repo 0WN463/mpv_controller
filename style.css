@@ -4,8 +4,20 @@
   height: 10dvh;
 }
 
-.wrapper {
+.top-wrapper {
   display: flex;
   flex-direction: column-reverse;
   height: 90dvh;
 }
+
+.volume-wrapper {
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 2em;
+}
+
+#volume {
+  width: 70dvw;
+  display: block;
+}
+

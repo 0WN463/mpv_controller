@@ -42,6 +42,9 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             case '/seek':
                 amt, *_ = query_params['amt']
                 send_to_socket(f'seek {amt}')
+            case '/volume':
+                amt, *_ = query_params['amt']
+                send_to_socket(f'set volume {amt}')
 
         self.send_response(204)
         self.end_headers()
