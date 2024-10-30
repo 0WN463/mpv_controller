@@ -1,6 +1,5 @@
 import socket
 import sys
-import json
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import urlparse, parse_qs
 
@@ -20,10 +19,15 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:
         self.send_response(200)
         self.end_headers()
-        self.path = 'page.html' 
 
-        with open('page.html', 'r') as f:
-            self.wfile.write(f.buffer.read())
+        if self.path == '/':
+            with open('page.html', 'r') as f:
+                self.wfile.write(f.buffer.read())
+                return
+        elif self.path == '/style.css':
+            with open('style.css', 'r') as f:
+                self.wfile.write(f.buffer.read())
+                return
 
     def do_POST(self) -> None:
         parsed_url = urlparse(self.path)
