@@ -25,6 +25,9 @@
             <button id="seek-f-10"> > 10s </button>
             <button id="seek-f-60"> > 60s </button>
         </div>
+        <div class="info-container">
+            <button id="info-button">🛈</button>
+        </div>
     </div>
 </body>
 
@@ -36,6 +39,7 @@
 	'seek-b-10': '/seek?amt=-10',
 	'seek-f-60': '/seek?amt=60',
 	'seek-b-60': '/seek?amt=-60',
+	'info-button': '/info',
     }
 
     Object.entries(commandMappings).forEach(([id, action]) => document.getElementById(id).onclick = () => fetch(action, { method: 'POST' }))

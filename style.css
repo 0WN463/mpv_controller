@@ -4,6 +4,12 @@
   height: 10dvh;
 }
 
+.info-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2em;
+}
+
 button {
   width: 15%;
   font-size: large;
@@ -13,6 +19,7 @@ button {
   display: flex;
   flex-direction: column-reverse;
   height: 90dvh;
+  gap: 1em;
 }
 
 .volume-wrapper {

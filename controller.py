@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import json
 import socket
 import sys
 from http.server import HTTPServer, BaseHTTPRequestHandler
@@ -15,7 +16,6 @@ def send_to_socket(cmd: str) -> None:
             sock.sendall((cmd + '\n').encode())
         except socket.error as e:
             print(f"Socket error: {e}")
-
 
 class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:
@@ -45,6 +45,8 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             case '/volume':
                 amt, *_ = query_params['amt']
                 send_to_socket(f'set volume {amt}')
+            case '/info':
+                send_to_socket('{"command": ["expand-properties", "osd-msg-bar", "show-text", "${media-title}\\n${time-pos}/${duration}"]}')
 
         self.send_response(204)
         self.end_headers()
