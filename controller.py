@@ -46,7 +46,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
                 amt, *_ = query_params['amt']
                 send_to_socket(f'set volume {amt}')
             case '/info':
-                send_to_socket('{"command": ["expand-properties", "osd-msg-bar", "show-text", "${media-title}\\n${time-pos}/${duration}"]}')
+                send_to_socket('set osd-msg3 "${media-title}\\n${time-pos}/${duration}"; show-progress')
 
         self.send_response(204)
         self.end_headers()
